@@ -18,7 +18,12 @@ export default {
               required: true
             },
             price: Number,
-            ingredients: Array,
+            ingredients: {
+              type: Array,
+              validator: (arr) => {
+                return arr.every((i) => typeof i === 'string')
+              }
+            },
             expirationDate: {
               type: Date,
               default: () => new Date()

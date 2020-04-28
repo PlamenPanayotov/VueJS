@@ -1,11 +1,20 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button @click="selectedComponent = 'HelloWorld'">Render HelloWorld</button>
+    <button @click="selectedComponent = 'ProductList'">Render ProductList</button>
+    <component :is="selectedComponent" 
+    msg="Welcome to Your Vue.js App"
+    :products="products" 
+    :title="title" 
+    @onChangeTitle="title = $event"
+    >
+      
+    </component>
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/>
     <ProductList 
     :products="products" 
     :title="title" 
-    @onChangeTitle="title = $event" /> 
+    @onChangeTitle="title = $event" />  -->
     <!-- <Counter v-bind:counter="counter" />
     <Counter v-bind:counter="counter" />
     <Counter v-bind:counter="counter" /> -->
@@ -39,7 +48,8 @@ export default {
           ingredients: [ 'Eggs', 'Flour', 'Milk' ]
         }
       ],
-      title: 'This is my product list!'
+      title: 'This is my product list!',
+      selectedComponent: 'HelloWorld',
     }
   },
   components: {
