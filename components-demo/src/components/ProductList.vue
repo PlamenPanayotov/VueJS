@@ -1,6 +1,7 @@
 <template>
   <div>
-      <p>This is my product List</p>
+      <p>{{title}}</p>
+      <input type="text" :value="title" @input="changeTitle" />
       <Product v-for="(p, i) in products"
       :type="p.type"
       :price="p.price"
@@ -14,12 +15,19 @@ import Product from './Product.vue'
 export default {
   name: 'ProductList',
     props: {
-        products: Array
+        products: Array,
+        title: String
     },
   data: function () {
       return {
        
       }
+  },
+  methods: {
+    changeTitle(e) {
+      const value = e.target.value
+      this.$emit('onChangeTitle', value)
+    }
   },
   components: {
       Product
