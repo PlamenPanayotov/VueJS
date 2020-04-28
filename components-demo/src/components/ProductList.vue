@@ -3,7 +3,7 @@
       <p>{{title}}</p>
       <input type="text" :value="title" @input="changeTitle" />
       <Product v-for="(p, i) in products"
-      :type="p.type"
+      :mealType="p.mealType"
       :price="p.price"
       :ingredients="p.ingredients"
       :key="i"  />

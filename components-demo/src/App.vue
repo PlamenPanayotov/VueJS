@@ -24,17 +24,17 @@ export default {
       counter: 0,
       products: [
         { 
-          type: 'Spaghetti', 
+          mealType: 'Spaghetti', 
           price: 11, 
           ingredients: [ 'Pasta', 'Meatballs', 'Sause' ]
         },
         { 
-          type: 'Musaka', 
+          mealType: 'Musaka', 
           price: 5, 
           ingredients: [ 'Potatoes', 'Mince', 'Eggs' ]
         },
         { 
-          type: 'Pancakes', 
+          mealType: 'Pancakes', 
           price: 11, 
           ingredients: [ 'Eggs', 'Flour', 'Milk' ]
         }

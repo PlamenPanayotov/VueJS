@@ -1,11 +1,11 @@
 <template>
   <div>
-      <p>{{ type }}</p>
+      <p>{{ mealType }}</p>
       <p>{{ price }}</p>
       <ul>
           <li v-for="(ing, i) in ingredients" :key="i">{{ing}}</li>
-        
       </ul>
+      <div>{{expirationDate}}</div>
   </div>
 </template>
 
@@ -13,9 +13,16 @@
 export default {
   name: 'Product',
   props: {
-            type: String,
+            mealType: {
+              type: String,
+              required: true
+            },
             price: Number,
-            ingredients: Array
+            ingredients: Array,
+            expirationDate: {
+              type: Date,
+              default: () => new Date()
+            }
         },
   data: function () {
       return {
