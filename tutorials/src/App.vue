@@ -11,7 +11,7 @@
       <!-- <app-home :subjects="subjects"></app-home> -->
       <!-- <app-login></app-login> -->
       <!-- <app-register></app-register> -->
-      <app-create-subject :technologies="tutorials.technologies" :subjects="subjects"></app-create-subject>
+      <app-create-subject :technologies="tutorials.technologies" :subjects="subjects" @create="createHandler($event)"></app-create-subject>
     </div>
     <app-footer></app-footer>
   </div>
@@ -47,6 +47,10 @@ export default {
   methods: {
     navigationHandler(idx) {
       this.selectedTechnologyIdx = idx;
+    },
+    createHandler({ technologyId, subject: name, htmlContent: content }) {
+      const selectedTechnology = this.tutorials.technologies.find(t => t.id === technologyId);
+      selectedTechnology.subjects = selectedTechnology.subjects.concat({ name, content });
     }
   },
   computed: {

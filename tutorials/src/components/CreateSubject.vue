@@ -16,7 +16,7 @@
       <div class="form-group">
         <input placeholder="Technology subject..." type="text" id="subject" v-model="subject" />
       </div>
-      <select name="technologies" id="technologies" v-model="technology">
+      <select name="technologies" id="technologies" v-model="technologyId">
         <option :value="null" selected>Select a technology...</option>
         <option v-for="item in technologies" :key="item.id" :value="item.id">{{item.name}}</option>
       </select>
@@ -51,7 +51,7 @@ export default {
     return {
       selectedSubjectIndex: 0,
       htmlContent: '',
-      technology: null,
+      technologyId: null,
       subject: ''
     }
   },
@@ -60,7 +60,11 @@ export default {
       this.selectedSubjectIndex = idx
     },
     createSubjectHandler() {
-        this.$emit('create')
+        const { technologyId, subject, htmlContent } = this.$data;
+        this.$emit('create', { technologyId, subject, htmlContent })
+        this.technologyId = null
+        this.subject = ''
+        this.htmlContent = ''
     }
   },
   computed: {
